@@ -1,6 +1,6 @@
 package ce.mnu.capstone.controller;
 
-import ce.mnu.capstone.VO.TestVO;
+import ce.mnu.capstone.domain.TestVO;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 

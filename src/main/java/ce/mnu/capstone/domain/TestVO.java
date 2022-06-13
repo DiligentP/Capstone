@@ -1,4 +1,4 @@
-package ce.mnu.capstone.VO;
+package ce.mnu.capstone.domain;
 
 import lombok.Data;
 
