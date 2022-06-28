@@ -1,12 +1,8 @@
-# This workflow uses actions that are not certified by GitHub.
-# They are provided by a third-party and are governed by
-# separate terms of service, privacy policy, and support
-# documentation.
-# This workflow will build a Java project with Gradle and cache/restore any dependencies to improve the workflow execution time
-# For more information see: https://help.github.com/actions/language-and-framework-guides/building-and-testing-java-with-gradle
+# Repository의 Actions 탭에 나타날 Workflow 이름으로 필수 옵션은 아닙니다.
+name: Spring Boot & Gradle CI/CD
 
-name: Java CI with Gradle
 
+# Workflow를 실행시키기 위한 Event 목록입니다.
 on:
   push:
     branches: [ "main" ]
@@ -16,6 +12,9 @@ on:
 permissions:
   contents: read
 
+
+
+# 해당 Workflow의 하나 이상의 Job 목록입니다.
 jobs:
   build:
 
@@ -27,8 +26,9 @@ jobs:
       uses: actions/setup-java@v3
       with:
         java-version: '11'
-        distribution: 'temurin'
+    
+    - name: Grant execute permission for gradlew
+      run: chmod +x gradlew
+    
     - name: Build with Gradle
-      uses: gradle/gradle-build-action@67421db6bd0bf253fb4bd25b31ebb98943c375e1
-      with:
-        arguments: build
+      run: ./gradlew clean build
