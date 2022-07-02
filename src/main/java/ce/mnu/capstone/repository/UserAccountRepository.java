@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Repository
-public interface UserAccountRepository {
+public interface UserAccountRepository{
 
     UserAccount save(UserAccount user);
 

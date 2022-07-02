@@ -13,7 +13,7 @@ import javax.persistence.Id;
 import java.util.Date;
 
 @Getter
-@NoArgsConstructor(access = AccessLevel.PROTECTED)
+@NoArgsConstructor(access = AccessLevel.PUBLIC)
 @Entity
 public class UserAccount {
 
