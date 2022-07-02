@@ -1,4 +1,4 @@
-package ce.mnu.capstone.repository;
+package ce.mnu.capstone.domain;
 
 
 import lombok.AccessLevel;
@@ -17,8 +17,7 @@ import java.util.Date;
 @Entity
 public class UserAccount {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long userno;  // 유저 번호
     private String userid; // 유저 아이디
     private String userpass; // 유저 패스워드

@@ -1,9 +1,19 @@
 package ce.mnu.capstone.repository;
 
-import org.springframework.data.jpa.repository.JpaRepository;
+import ce.mnu.capstone.domain.UserAccount;
 import org.springframework.stereotype.Repository;
 
-@Repository
-public interface UserAccountRepository extends JpaRepository<UserAccount, Long> {
+import java.util.List;
+import java.util.Optional;
 
+@Repository
+public interface UserAccountRepository {
+
+    UserAccount save(UserAccount user);
+
+    Optional<UserAccount> findById(Long id);
+
+    Optional<UserAccount> findByName(String name);
+
+    List<UserAccount> findAll();
 }
