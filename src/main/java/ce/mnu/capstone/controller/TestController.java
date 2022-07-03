@@ -2,9 +2,11 @@ package ce.mnu.capstone.controller;
 
 import ce.mnu.capstone.domain.TestVO;
 import ce.mnu.capstone.domain.UserAccount;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import ce.mnu.capstone.domain.UserFocus;
+import lombok.extern.log4j.Log4j;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.HashMap;
 
 @RestController
 public class TestController {
@@ -41,6 +43,12 @@ public class TestController {
         else{
             return null;
         }
+    }
 
+    @PostMapping("/deep")
+    public String deepJson(@RequestBody HashMap<String, Object> json){
+        System.out.println("json : " + json);
+
+        return "황현이형 굿";
     }
 }
