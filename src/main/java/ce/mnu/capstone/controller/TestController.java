@@ -32,9 +32,6 @@ public class TestController {
                 .userid("woong")
                 .userpass("woong")
                 .username("박건웅")
-                .userphone("010-1234-4567")
-                .useremail("woongs@gmail.com")
-                .userage(27L)
                 .build();
 
         if (id.equals("woong") && pass.equals("woong")){
