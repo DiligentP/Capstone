@@ -49,6 +49,6 @@ public class TestController {
     public String deepJson(@RequestBody HashMap<String, Object> json){
         System.out.println("json : " + json);
 
-        return "황현이형 굿";
+        return "success";
     }
 }
