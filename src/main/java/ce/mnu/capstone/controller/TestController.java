@@ -42,6 +42,18 @@ public class TestController {
         }
     }
 
+    @PostMapping("/reg")
+    public String testReg(@RequestParam("userid") String id, @RequestParam("userpass") String pass, @RequestParam("username") String name){
+        UserAccount user = UserAccount.builder()
+                .userid(id)
+                .userpass(pass)
+                .username(name)
+                .build();
+        System.out.println("Reg Data : " + id + pass + name);
+
+        return "success";
+    }
+
     @PostMapping("/deep")
     public String deepJson(@RequestBody HashMap<String, Object> json){
         System.out.println("json : " + json);
