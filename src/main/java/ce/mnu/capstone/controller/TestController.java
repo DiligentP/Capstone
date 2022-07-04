@@ -26,7 +26,7 @@ public class TestController {
 
         return test;
     }
-    @RequestMapping("/login")
+    @GetMapping("/login")
     public UserAccount testWoong(@RequestParam("id") String id, @RequestParam("pass") String pass) {
         UserAccount user = UserAccount.builder()
                 .userid("woong")
@@ -51,7 +51,7 @@ public class TestController {
                 .build();
         System.out.println("Reg Data : " + id + pass + name);
 
-        return "success";
+        return "{\"status\":\"success\"}";
     }
 
     @PostMapping("/deep")
