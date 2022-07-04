@@ -7,19 +7,38 @@ import springfox.documentation.builders.ApiInfoBuilder;
 import springfox.documentation.builders.PathSelectors;
 import springfox.documentation.builders.RequestHandlerSelectors;
 import springfox.documentation.service.ApiInfo;
+import springfox.documentation.service.Server;
 import springfox.documentation.spi.DocumentationType;
 import springfox.documentation.spring.web.plugins.Docket;
 
+import java.util.Collections;
+
 @Configuration
-@EnableWebMvc
+//@EnableWebMvc
 public class SwaggerConfig {
 
+    private static final String API_NAME = "Capstone API Document";
+    private static final String API_VERSION = "1,0.0";
+    private static final String API_DESCRIPTION = "목포대학교 집중해줄래 팀 API 문서";
+
     @Bean
-    public Docket api() {
-        return new Docket(DocumentationType.OAS_30)
+    public Docket FrontApI() {
+        return new Docket(DocumentationType.OAS_30) // 문서 타입
+                .groupName("FrontEnd API Document")
                 .useDefaultResponseMessages(false)
                 .select()
-                .apis(RequestHandlerSelectors.basePackage("ce.mnu.capstone"))
+                .apis(RequestHandlerSelectors.basePackage("ce.mnu.capstone.controller.frontend"))
+                .paths(PathSelectors.any())
+                .build()
+                .apiInfo(apiInfo());
+    }
+    @Bean
+    public Docket DeepApI() {
+        return new Docket(DocumentationType.OAS_30) // 문서 타입
+                .groupName("DeepLearning API Document")
+                .useDefaultResponseMessages(false)
+                .select()
+                .apis(RequestHandlerSelectors.basePackage("ce.mnu.capstone.controller.deeplearning"))
                 .paths(PathSelectors.any())
                 .build()
                 .apiInfo(apiInfo());
@@ -27,9 +46,9 @@ public class SwaggerConfig {
 
     private ApiInfo apiInfo(){
         return new ApiInfoBuilder()
-                .title("Capstone API with Swagger")
-                .description("목포대학교 집중해줄래 팀 API 문서")
-                .version("1.0.0")
+                .title(API_NAME)
+                .description(API_DESCRIPTION)
+                .version(API_VERSION)
                 .build();
     }
 }
