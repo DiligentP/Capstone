@@ -8,6 +8,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class CapstoneController {
     @GetMapping("/")
     public String index () {
-        return "index";
+        return "Hello";
     }
 }

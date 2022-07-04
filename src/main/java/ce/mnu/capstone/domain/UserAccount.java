@@ -5,19 +5,12 @@ import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 import java.util.Date;
 
 @Getter
 @NoArgsConstructor(access = AccessLevel.PUBLIC)
-@Entity
 public class UserAccount {
 
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long userno;  // 유저 번호
     private String userid; // 유저 아이디
     private String userpass; // 유저 패스워드
