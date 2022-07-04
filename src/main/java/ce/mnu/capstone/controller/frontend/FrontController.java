@@ -29,6 +29,7 @@ public class FrontController {
     }
 
     @PostMapping("/reg")
+    @ApiOperation(value = "유저 회원가입", notes = "")
     public String testReg(@RequestParam("userid") String id, @RequestParam("userpass") String pass, @RequestParam("username") String name){
         UserAccount user = UserAccount.builder()
                 .userid(id)
