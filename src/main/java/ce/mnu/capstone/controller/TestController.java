@@ -10,10 +10,6 @@ import java.util.HashMap;
 
 @RestController
 public class TestController {
-    @RequestMapping("/")
-    public String index () {
-        return "Hello World";
-    }
 
     @RequestMapping("/test")
     public TestVO test() {
