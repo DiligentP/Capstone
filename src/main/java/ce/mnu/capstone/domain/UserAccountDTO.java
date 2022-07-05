@@ -10,7 +10,7 @@ import java.util.Date;
 
 @Getter
 @NoArgsConstructor(access = AccessLevel.PUBLIC)
-public class UserAccount {
+public class UserAccountDTO {
 
     @ApiModelProperty(example = "유저 번호")
     private Long userno;
@@ -24,7 +24,7 @@ public class UserAccount {
     private Date regidate;
 
     @Builder
-    public UserAccount(String userid, String userpass, String username){
+    public UserAccountDTO(String userid, String userpass, String username){
         this.userid = userid;
         this.userpass = userpass;
         this.username = username;

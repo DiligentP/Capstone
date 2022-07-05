@@ -3,7 +3,7 @@ package ce.mnu.capstone.domain;
 import lombok.Data;
 
 @Data
-public class UserFocus {
+public class UserFocusDTO {
     
     // 유저 번호
     private Long userno;
