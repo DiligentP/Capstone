@@ -21,7 +21,8 @@ public class SwaggerConfig {
     private static final String API_VERSION = "1,0.0";
     private static final String API_DESCRIPTION = "목포대학교 집중해줄래 팀 API 문서 <br> " +
             "상태 코드 참고 : <a href='http://www.incodom.kr/Status_code' target='_blank'>" +
-            "http://www.incodom.kr/Status_code</a>";
+            "http://www.incodom.kr/Status_code</a>"+
+            "우측 상단 카테고리 확인";
 
     @Bean
     public Docket FrontApI() {
