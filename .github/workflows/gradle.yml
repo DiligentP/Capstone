@@ -3,8 +3,6 @@ name: Spring Boot & Gradle CI/CD
 on:
   push:
     branches: [ "main" ]
-  pull_request:
-    branches: [ "main" ]
 
 jobs:
   build:
@@ -24,3 +22,10 @@ jobs:
     
     - name: Build with Gradle
       run: ./gradlew clean build
+      
+
+#   example-cd:
+  
+#     runs-on: diligentp.com
+    
+#     needs: build
