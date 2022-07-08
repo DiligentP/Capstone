@@ -100,7 +100,7 @@ public class FrontController {
         HashMap<String, ArrayList<Object>> map = new HashMap<>();
         map.put(Date,arrayList);
 
-        log.info("분석 정보 요청 성공");
+        log.info("분석 정보 요청 성공 {}",map);
         return ResponseEntity.ok().body(map);
     }
 
