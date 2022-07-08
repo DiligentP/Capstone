@@ -1,25 +1,30 @@
 package ce.mnu.capstone.controller.frontend;
 
 import ce.mnu.capstone.domain.UserAccount;
+import ce.mnu.capstone.domain.UserFocus;
+import ce.mnu.capstone.repository.UserFocusRepository;
 import ce.mnu.capstone.service.UserAccountService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import springfox.documentation.spring.web.json.Json;
+
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+import java.util.HashMap;
 
 @RestController @Slf4j
+@RequiredArgsConstructor
 @Api(tags = {"클라이언트에 제공하는 API"})
 public class FrontController {
 
-    UserAccountService userAccountService;
+    private final UserAccountService userAccountService;
+    private final UserFocusRepository userFocusRepository;
 
-    @Autowired
-    public FrontController(UserAccountService userAccountService) {
-        this.userAccountService = userAccountService;
-    }
 
     @GetMapping("/login")
     @ApiOperation(value = "유저 로그인", notes = "파라미터 id, pass 성공 200  실패 400")
@@ -78,6 +83,25 @@ public class FrontController {
 
         log.info("회원 탈퇴 성공");
         return new ResponseEntity<>(HttpStatus.OK);
+    }
+
+    @GetMapping("/analysis")
+    @ApiOperation(value = "사용자 집중 분석 통계 API", notes = "파라미터 userno 성공 200 실패 400")
+    public ResponseEntity analysis(@RequestParam Long userno) {
+        log.info("분석 정보 요청 UserNo : {}",userno);
+
+        UserFocus Response = userFocusRepository.findByUserno(userno);
+
+        String Date = Response.getFocusdate();
+
+        ArrayList<Object> arrayList = new ArrayList<>();
+        arrayList.add(Response);
+
+        HashMap<String, ArrayList<Object>> map = new HashMap<>();
+        map.put(Date,arrayList);
+
+        log.info("분석 정보 요청 성공");
+        return ResponseEntity.ok().body(map);
     }
 
 }
