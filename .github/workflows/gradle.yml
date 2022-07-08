@@ -40,3 +40,4 @@ jobs:
         port: ${{ secrets.REMOTE_SSH_PORT }}
         script: |
           echo "배포 테스트"
+          ls -al
