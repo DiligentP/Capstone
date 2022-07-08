@@ -39,4 +39,4 @@ jobs:
         key: ${{ secrets.REMOTE_SSH_KEY }}
         port: ${{ secrets.REMOTE_SSH_PORT }}
         script: |
-          ls -al
+          echo "배포 테스트"
