@@ -39,5 +39,5 @@ jobs:
         key: ${{ secrets.REMOTE_SSH_KEY }}
         port: ${{ secrets.REMOTE_SSH_PORT }}
         script: |
-          echo "배포 테스트"
-          ls -al
+          echo "배포 스크립트 실행"
+          sh capstoneCD.sh
