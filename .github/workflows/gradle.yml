@@ -32,7 +32,7 @@ jobs:
     
     steps:
     - name: executing remote ssh commands using password
-      uses: diligentp/ssh-action@master
+      uses: appleboy/ssh-action@master
       with:
         host: ${{ secrets.REMOTE_IP }}
         username: ${{ secrets.REMOTE_SSH_ID }}
