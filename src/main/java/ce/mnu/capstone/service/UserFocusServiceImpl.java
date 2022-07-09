@@ -25,4 +25,9 @@ public class UserFocusServiceImpl implements UserFocusService{
     public UserFocus getUserFocus(Long userno) {
         return userFocusRepository.findByUserno(userno);
     }
+
+    @Override
+    public UserFocus getUSerFocusAndDate(Long userno, String date) {
+        return userFocusRepository.findByUsernoAndFocusdate(userno,date);
+    }
 }

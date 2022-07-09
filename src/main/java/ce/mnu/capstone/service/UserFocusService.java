@@ -7,4 +7,6 @@ public interface UserFocusService {
     UserFocus modifyUserFocus(UserFocus userFocus);
 
     UserFocus getUserFocus(Long userno);
+
+    UserFocus getUSerFocusAndDate(Long userno, String date);
 }

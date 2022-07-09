@@ -11,11 +11,10 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import springfox.documentation.spring.web.json.Json;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 @RestController @Slf4j
 @RequiredArgsConstructor
@@ -85,12 +84,12 @@ public class FrontController {
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
-    @GetMapping("/analysis")
-    @ApiOperation(value = "사용자 집중 분석 통계 API", notes = "파라미터 userno 성공 200 실패 400")
-    public ResponseEntity analysis(@RequestParam Long userno) {
-        log.info("분석 정보 요청 UserNo : {}",userno);
+    @GetMapping("/stats")
+    @ApiOperation(value = "사용자 집중 분석 통계 API", notes = "파라미터 userno, date(yyyy-mm-dd) 성공 200 실패 400")
+    public ResponseEntity analysis(@RequestParam Long userno, String date) {
+        log.info("분석 정보 요청 UserNo : {} Date : {}",userno,date);
 
-        UserFocus Response = userFocusRepository.findByUserno(userno);
+        UserFocus Response = userFocusRepository.findByUsernoAndFocusdate(userno,date);
 
         String Date = Response.getFocusdate();
 
