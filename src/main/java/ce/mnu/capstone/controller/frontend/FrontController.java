@@ -4,6 +4,7 @@ import ce.mnu.capstone.domain.UserAccount;
 import ce.mnu.capstone.domain.UserFocus;
 import ce.mnu.capstone.repository.UserFocusRepository;
 import ce.mnu.capstone.service.UserAccountService;
+import ce.mnu.capstone.service.UserFocusService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;
@@ -22,7 +23,7 @@ import java.util.List;
 public class FrontController {
 
     private final UserAccountService userAccountService;
-    private final UserFocusRepository userFocusRepository;
+    private final UserFocusService userFocusService;
 
 
     @GetMapping("/login")
@@ -89,7 +90,7 @@ public class FrontController {
     public ResponseEntity analysis(@RequestParam Long userno, String date) {
         log.info("분석 정보 요청 UserNo : {} Date : {}",userno,date);
 
-        UserFocus Response = userFocusRepository.findByUsernoAndFocusdate(userno,date);
+        UserFocus Response = userFocusService.getUSerFocusAndDate(userno,date);
 
         String Date = Response.getFocusdate();
 
