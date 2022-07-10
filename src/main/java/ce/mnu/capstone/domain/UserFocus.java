@@ -5,9 +5,7 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.util.Date;
 
 @Entity
@@ -15,7 +13,9 @@ import java.util.Date;
 @Table(name = "user_focus")
 public class UserFocus {
 
-    @Id
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @ApiModelProperty(name = "집중 인덱스")
+    private Long focusno;
     @ApiModelProperty(name = "유저 번호")
     private Long userno;
     @ApiModelProperty(name = "집중 시간")
@@ -24,6 +24,7 @@ public class UserFocus {
     private Long unfocustime;
     @ApiModelProperty(name = "집중 퍼센트")
     private float con_per;
+
     @ApiModelProperty(name = "집중 날짜")
     private String focusdate;
 

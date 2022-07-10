@@ -5,6 +5,9 @@ import ce.mnu.capstone.repository.UserFocusRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Service
 public class UserFocusServiceImpl implements UserFocusService{
 
@@ -31,16 +34,28 @@ public class UserFocusServiceImpl implements UserFocusService{
      */
     @Override
     public UserFocus getUserFocus(Long userno) {
+
         return userFocusRepository.findByUserno(userno);
     }
 
     /**
-     * 유저 집중시간 요청 
+     * 유저 일별 집중시간 요청
      * @param userno
-     * @param date
+     * @param all_date (yyyy-mm-dd)
      */
     @Override
-    public UserFocus getUSerFocusAndDate(Long userno, String date) {
-        return userFocusRepository.findByUsernoAndFocusdate(userno,date);
+    public UserFocus getUserFocusAndDate(Long userno, String all_date) {
+
+        return userFocusRepository.findByUsernoAndFocusdate(userno,all_date);
+    }
+
+    /**
+     * 유저 월별 집중시간 요청
+     * @param userno
+     * @param ym_date (yyyy-mm)
+     */
+    @Override
+    public ArrayList<UserFocus> getUserFocusStanMonth(Long userno, String ym_date) {
+        return userFocusRepository.findByUsernoAndFocusdateLike(userno,ym_date);
     }
 }

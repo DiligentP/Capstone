@@ -85,12 +85,12 @@ public class FrontController {
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
-    @GetMapping("/stats")
-    @ApiOperation(value = "사용자 집중 분석 통계 API", notes = "파라미터 userno, date(yyyy-mm-dd) 성공 200 실패 400")
+    @GetMapping("/stats/day")
+    @ApiOperation(value = "사용자 일별 집중 분석 통계 API", notes = "파라미터 userno, date(yyyy-mm-dd) 성공 200 실패 400")
     public ResponseEntity analysis(@RequestParam Long userno, String date) {
-        log.info("분석 정보 요청 UserNo : {} Date : {}",userno,date);
+        log.info("사용자 일별 집중 통계 요청 UserNo : {} Date : {}",userno,date);
 
-        UserFocus Response = userFocusService.getUSerFocusAndDate(userno,date);
+        UserFocus Response = userFocusService.getUserFocusAndDate(userno,date);
 
         String Date = Response.getFocusdate();
 
@@ -104,4 +104,14 @@ public class FrontController {
         return ResponseEntity.ok().body(map);
     }
 
+    @GetMapping("/stats/month")
+    @ApiOperation(value = "사용자 월별 집중 분석 통계 API", notes = "파라미터 userno, date(yyyy-mm) 성공 200 실패 400")
+    public ResponseEntity ApiName(@RequestParam Long userno, String date){
+        log.info("사용자 월별 집중 통계 요청 UserNo : {} Date : {}",userno,date);
+
+        ArrayList<UserFocus> Response = userFocusService.getUserFocusStanMonth(userno, date+"%");
+
+        log.info("분석 정보 요청 성공 : {}",String.valueOf(Response) );
+        return ResponseEntity.ok().body(Response);
+    }
 }
