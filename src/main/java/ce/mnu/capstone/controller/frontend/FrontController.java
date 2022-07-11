@@ -13,6 +13,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.swing.text.html.parser.Entity;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -114,4 +115,5 @@ public class FrontController {
         log.info("분석 정보 요청 성공 : {}",String.valueOf(Response) );
         return ResponseEntity.ok().body(Response);
     }
+
 }
