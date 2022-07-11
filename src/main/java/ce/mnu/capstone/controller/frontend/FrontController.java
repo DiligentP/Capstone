@@ -120,6 +120,7 @@ public class FrontController {
     }
 
     @GetMapping("/rank")
+    @ApiOperation(value = "사용자 랭킹 API", notes = "파라미터 () 성공 200 실패 400")
     public ResponseEntity rank() {
 
         ArrayList<UserFocus> R = userFocusService.getRank();
