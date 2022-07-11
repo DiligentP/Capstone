@@ -3,8 +3,10 @@ package ce.mnu.capstone.service;
 import ce.mnu.capstone.domain.UserFocus;
 import ce.mnu.capstone.repository.UserFocusRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -57,5 +59,22 @@ public class UserFocusServiceImpl implements UserFocusService{
     @Override
     public ArrayList<UserFocus> getUserFocusStanMonth(Long userno, String ym_date) {
         return userFocusRepository.findByUsernoAndFocusdateLike(userno,ym_date);
+    }
+
+    /**
+     * 유저 랭킹 요청
+     */
+    @Override
+    public ArrayList<UserFocus> getRank() {
+//        return userFocusRepository.findAll(Sort.by(Sort.Direction.DESC, "focustime"));
+        return userFocusRepository.findDiligent();
+    }
+
+    /**
+     * 유저의 누적 집중시간 집계
+     */
+    @Override
+    public Long getUserTotalTime(Long userno) {
+        return userFocusRepository.findUserTotalTime(userno);
     }
 }

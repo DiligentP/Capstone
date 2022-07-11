@@ -2,9 +2,12 @@ package ce.mnu.capstone.controller.frontend;
 
 import ce.mnu.capstone.domain.UserAccount;
 import ce.mnu.capstone.domain.UserFocus;
+import ce.mnu.capstone.domain.UserRankDTO;
 import ce.mnu.capstone.repository.UserFocusRepository;
 import ce.mnu.capstone.service.UserAccountService;
 import ce.mnu.capstone.service.UserFocusService;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;
@@ -116,4 +119,24 @@ public class FrontController {
         return ResponseEntity.ok().body(Response);
     }
 
+    @GetMapping("/rank")
+    public ResponseEntity rank() {
+
+        ArrayList<UserFocus> R = userFocusService.getRank();
+        ArrayList<Object> Rank = new ArrayList<>();
+
+        for(int i=0; i<R.size(); i++){
+            UserAccount user = userAccountService.getUser(R.get(i).getUserno());
+            UserRankDTO dto = new UserRankDTO(
+                    R.get(i).getUserno(),
+                    user.getUserid(),
+                    user.getUsername(),
+                    userFocusService.getUserTotalTime(R.get(i).getUserno())
+            );
+
+           Rank.add(dto);
+       }
+
+        return ResponseEntity.ok().body(Rank);
+    }
 }
