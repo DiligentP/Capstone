@@ -11,6 +11,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 
 @RestController @Slf4j
@@ -34,10 +35,10 @@ public class DeepController {
 
     @GetMapping("/getUserFocus")
     @ApiOperation(value = "유저 집중시간 조회 요청 API", notes = "파라미터 userno")
-    public ResponseEntity<UserFocus> getUserFocus(@RequestParam Long userno){
+    public ResponseEntity getUserFocus(@RequestParam Long userno){
         log.info("딥러닝서버 유저 집중시간 조회 요청 :  UserNo : {}", userno);
 
-        UserFocus Response = userFocusService.getUserFocus(userno);
+        ArrayList<UserFocus> Response = userFocusService.getUserFocus(userno);
 
         if(Response == null) {
             log.warn("딥러닝 서버 요청 실패 : {}","존재하지 않는 유저");
@@ -59,6 +60,5 @@ public class DeepController {
         log.info("딥러닝 서버 요청 성공 : {}", user);
         return true;
     }
-
 
 }

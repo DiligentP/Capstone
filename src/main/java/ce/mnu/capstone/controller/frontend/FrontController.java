@@ -87,7 +87,7 @@ public class FrontController {
 
     @GetMapping("/stats/day")
     @ApiOperation(value = "사용자 일별 집중 분석 통계 API", notes = "파라미터 userno, date(yyyy-mm-dd) 성공 200 실패 400")
-    public ResponseEntity analysis(@RequestParam Long userno, String date) {
+    public ResponseEntity statsDay(@RequestParam Long userno, String date) {
         log.info("사용자 일별 집중 통계 요청 UserNo : {} Date : {}",userno,date);
 
         UserFocus Response = userFocusService.getUserFocusAndDate(userno,date);
@@ -106,7 +106,7 @@ public class FrontController {
 
     @GetMapping("/stats/month")
     @ApiOperation(value = "사용자 월별 집중 분석 통계 API", notes = "파라미터 userno, date(yyyy-mm) 성공 200 실패 400")
-    public ResponseEntity ApiName(@RequestParam Long userno, String date){
+    public ResponseEntity statsMonth(@RequestParam Long userno, String date){
         log.info("사용자 월별 집중 통계 요청 UserNo : {} Date : {}",userno,date);
 
         ArrayList<UserFocus> Response = userFocusService.getUserFocusStanMonth(userno, date+"%");

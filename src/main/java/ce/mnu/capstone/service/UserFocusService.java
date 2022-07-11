@@ -9,7 +9,7 @@ public interface UserFocusService {
 
     UserFocus modifyUserFocus(UserFocus userFocus);
 
-    UserFocus getUserFocus(Long userno);
+    ArrayList<UserFocus> getUserFocus(Long userno);
 
     UserFocus getUserFocusAndDate(Long userno, String all_date);
 

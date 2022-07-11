@@ -33,7 +33,7 @@ public class UserFocusServiceImpl implements UserFocusService{
      * @param userno
      */
     @Override
-    public UserFocus getUserFocus(Long userno) {
+    public ArrayList<UserFocus> getUserFocus(Long userno) {
 
         return userFocusRepository.findByUserno(userno);
     }
