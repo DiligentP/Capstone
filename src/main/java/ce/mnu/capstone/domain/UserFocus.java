@@ -1,17 +1,14 @@
 package ce.mnu.capstone.domain;
 
 import io.swagger.annotations.ApiModelProperty;
-import lombok.Builder;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
 
 @Entity
-@Getter @NoArgsConstructor
+@Getter @NoArgsConstructor @AllArgsConstructor
 @Table(name = "user_focus")
 @IdClass(UserFocus.UserFocusKey.class)
 public class UserFocus {

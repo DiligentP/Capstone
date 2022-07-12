@@ -122,7 +122,7 @@ public class FrontController {
     @GetMapping("/rank")
     @ApiOperation(value = "사용자 랭킹 API", notes = "파라미터 () 성공 200 실패 400")
     public ResponseEntity rank() {
-
+        log.info("사용자 랭킹 요청");
         ArrayList<UserFocus> R = userFocusService.getRank();
         ArrayList<Object> Rank = new ArrayList<>();
 
@@ -137,7 +137,7 @@ public class FrontController {
 
            Rank.add(dto);
        }
-
+        log.info("사용자 랭킹 요청 성공");
         return ResponseEntity.ok().body(Rank);
     }
 }
