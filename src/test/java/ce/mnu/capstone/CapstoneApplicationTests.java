@@ -19,4 +19,20 @@ import java.util.List;
 @Slf4j
 class CapstoneApplicationTests {
 
+    @Autowired
+    UserFocusService userFocusService;
+
+    @Test
+    public void Test(){
+        UserFocus user = userFocusService.getUserFocusAndDate(1L, "2022-00-01");
+
+        if(user==null){
+            log.info("user null");
+        }
+        else{
+            log.info("user not null");
+        }
+
+
+    }
 }

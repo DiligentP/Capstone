@@ -55,9 +55,29 @@ public class DeepController {
     public Boolean modifyUserFocus(@RequestBody UserFocus json){
         log.info("딥러닝서버 유저 집중시간 갱신 요청 :  {}", json);
 
-        UserFocus user = userFocusService.modifyUserFocus(json);
+        UserFocus user = userFocusService.getUserFocusAndDate(json.getUserno(), json.getFocusdate());
 
-        log.info("딥러닝 서버 요청 성공 : {}", user);
+        // 새로 생성할때,
+        if(user == null) {
+            UserFocus Response = userFocusService.modifyUserFocus(json);
+            log.info("딥러닝 서버 요청 성공 : {}", Response);
+            return true;
+        }
+
+        Long focustime = user.getFocustime() + json.getFocustime();
+        Long unfocustime = user.getUnfocustime() + json.getUnfocustime();
+        float con_per = focustime / (focustime + unfocustime);
+
+        UserFocus buildUser = UserFocus.builder()
+                .userno(user.getUserno())
+                .focusdate(user.getFocusdate())
+                .focustime(focustime)
+                .unfocustime(unfocustime)
+                .con_per(con_per)
+                .build();
+
+        UserFocus Response = userFocusService.modifyUserFocus(buildUser);
+        log.info("딥러닝 서버 요청 성공 : {}", Response);
         return true;
     }
 

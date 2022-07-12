@@ -8,7 +8,7 @@ import java.io.Serializable;
 import java.util.Date;
 
 @Entity
-@Getter @NoArgsConstructor @AllArgsConstructor
+@Getter @NoArgsConstructor
 @Table(name = "user_focus")
 @IdClass(UserFocus.UserFocusKey.class)
 public class UserFocus {
@@ -38,8 +38,9 @@ public class UserFocus {
 
 
     @Builder
-    public UserFocus(Long userno, Long focustime, Long unfocustime, float con_per) {
+    public UserFocus(Long userno, String focusdate, Long focustime, Long unfocustime, float con_per) {
         this.userno = userno;
+        this.focusdate = focusdate;
         this.focustime = focustime;
         this.unfocustime = unfocustime;
         this.con_per = con_per;
