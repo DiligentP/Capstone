@@ -66,7 +66,7 @@ public class DeepController {
 
         Long focustime = user.getFocustime() + json.getFocustime();
         Long unfocustime = user.getUnfocustime() + json.getUnfocustime();
-        float con_per = focustime / (focustime + unfocustime);
+        Long con_per = (focustime*100 / (focustime + unfocustime));
 
         UserFocus buildUser = UserFocus.builder()
                 .userno(user.getUserno())
