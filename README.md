@@ -1,5 +1,5 @@
 # Capstone [server]
 
-## [Swegger Document] http://diligentp.com/
+## [Swegger Document]
 
 ## https://github.com/parkgeonwoong/capstone-reactNative
